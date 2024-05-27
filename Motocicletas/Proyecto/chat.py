@@ -90,11 +90,25 @@ zona = ctrl.Antecedent(np.arange(1, 11, 1), 'zona')
 recomendacion = ctrl.Consequent(np.arange(1, 11, 1), 'recomendacion')
 
 # Funciones de membresía
-presupuesto.automf(3, names=['bajo', 'medio', 'alto'])
-potencia.automf(3, names=['baja', 'media', 'alta'])
-uso.automf(3, names=['bajo', 'medio', 'alto']) 
-zona.automf(3, names=['rural', 'suburbana', 'urbana'])
-recomendacion.automf(3, names=['poca', 'moderada', 'alta'])
+presupuesto['bajo'] = fuzz.trimf(presupuesto.universe, [1, 1, 4])
+presupuesto['medio'] = fuzz.trimf(presupuesto.universe, [2, 5, 8])
+presupuesto['alto'] = fuzz.trimf(presupuesto.universe, [6, 10, 10])
+
+potencia['baja'] = fuzz.trimf(potencia.universe, [1, 1, 4])
+potencia['media'] = fuzz.trimf(potencia.universe, [2, 5, 8])
+potencia['alta'] = fuzz.trimf(potencia.universe, [6, 10, 10])
+
+uso['bajo'] = fuzz.trimf(uso.universe, [1, 1, 4])
+uso['medio'] = fuzz.trimf(uso.universe, [2, 5, 8])
+uso['alto'] = fuzz.trimf(uso.universe, [6, 10, 10])
+
+zona['rural'] = fuzz.trimf(zona.universe, [1, 1, 4])
+zona['suburbana'] = fuzz.trimf(zona.universe, [2, 5, 8])
+zona['urbana'] = fuzz.trimf(zona.universe, [6, 10, 10])
+
+recomendacion['poca'] = fuzz.trimf(recomendacion.universe, [1, 1, 4])
+recomendacion['moderada'] = fuzz.trimf(recomendacion.universe, [2, 5, 8])
+recomendacion['alta'] = fuzz.trimf(recomendacion.universe, [6, 10, 10])
 
 # Definir reglas difusas
 reglas = [
